@@ -1,0 +1,9 @@
+{
+  "clear": {"message": "Empty history" },
+  "text_copied": {"message": "The text copied to your clipboard. You can now paste it anywhere" },
+  "popup_title": {"message": "Click on text to copy it" },
+  "browser_action": {"message": "List texts" },
+  "ext_desc": {"message": "Histoy of copied texts" },
+  "ext_name": {"message": "1Click clipboard history" }
+}
+

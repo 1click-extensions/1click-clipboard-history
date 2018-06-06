@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Select url</title>
+  <style>
+      body{width: 230px;}
+      ul{list-style: none;margin: 0;padding: 0;}
+  li{font-size: 12px;list-style: none;
+  padding: 2px 5px;margin-bottom: 6px}
+  li button {
+    background: transparent;
+    border: 0;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: underline;
+}
+  #clear {
+				text-decoration: none;
+				color: #fff;
+				background-color: #26a69a;
+				text-align: center;
+				letter-spacing: .5px;
+				-webkit-transition: background-color .2s ease-out;
+				transition: background-color .2s ease-out;
+				cursor: pointer;
+				font-size: 10px;
+				outline: 0;
+				border: none;
+				border-radius: 2px;
+				display: inline-block;
+				height: 22px;
+				line-height:22px;
+				padding: 0 16px;
+				vertical-align: middle;
+				-webkit-tap-highlight-color: transparent;
+		}
+#to_copy,#text-copied{display: none;}
+#text-copied.show,#to_copy.show{display: block;}
+  </style>
+ 
+</head>
+<body class="popup-box" >
+  <div id="text-copied"></div>
+  <h4 id="title">Click on text to paste</h4>
+  <ul id="data"></ul>
+  <button type="button" id="clear" class="btn">Clear history</button>
+  <textarea id="to_copy"></textarea>
+  <script src='../js/popup.js'></script>
+</body>
+</html>

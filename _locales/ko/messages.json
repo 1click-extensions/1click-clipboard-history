@@ -1,0 +1,8 @@
+{
+  "text_copied": {"message": "The text copied to your clipboard. You can now paste it anywheere" },
+  "popup_title": {"message": "Click on text to paste" },
+  "browser_action": {"message": "List texts" },
+  "ext_desc": {"message": "Histoy of copied texts" },
+  "ext_name": {"message": "1Click clipboard history" }
+}
+
