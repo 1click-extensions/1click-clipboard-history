@@ -3,20 +3,16 @@
     "short_name": "__MSG_ext_name__",
     "version": "1.0",
     "description": "__MSG_ext_desc__",
-    "permissions": [
+    "optional_permissions": [
+          "tabs",
+          "<all_urls>",
           "clipboardRead",
           "clipboardWrite"
         ],
     "background": {
-      "scripts": ["background.js"],
+      "scripts": ["js/permissions.js","background.js"],
       "persistent": false
     },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["js/script.js"]
-      }
-    ],
     "browser_action":{
       "default_icon": "images/browseraction.png",
       "default_title": "__MSG_browser_action__",
