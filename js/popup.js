@@ -51,6 +51,13 @@ function rebuildPopup(){
                     //console.log(button);
                     button.onclick = function(){
                         pasteSelected(this.innerText);
+                        if(!localStorage.getItem('explained')){
+                            localStorage.setItem('explained', 1);
+                            alert(chrome.i18n.getMessage("text_copied"))
+                        }
+                        chrome.runtime.sendMessage({
+                            action: 'injectJs',
+                        });
                     }
                     dataDom.appendChild(li);
                     document.getElementById(iden).value = part;

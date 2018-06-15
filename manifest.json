@@ -10,7 +10,7 @@
           "clipboardWrite"
         ],
     "background": {
-      "scripts": ["js/permissions.js","background.js"],
+      "page": "pages/background.html",
       "persistent": false
     },
     "browser_action":{

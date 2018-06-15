@@ -8,7 +8,7 @@ if (!localStorage.created) {
 }
 var pasteData = [];
 chrome.runtime.onMessage.addListener(function (data, sender, callback) {
- //console.log(sender)
+ //console.log(data)
  switch (data.data) {
      case 'copyDataAdded':
        //console.log(data.imgData);
@@ -26,17 +26,7 @@ chrome.runtime.onMessage.addListener(function (data, sender, callback) {
        pasteData = [];
        break;
      case 'permissions_granted':
-          chrome.tabs.query({currentWindow: false}, function(tabs) {
-            tabs.forEach(function(tab) {
-              console.log(tab);
-              chrome.tabs.executeScript(tab.id, {file:'js/script.js'});
-            });
-        });
-        chrome.tabs.onCreated.addListener(function(tab){
-          permission.checkPermissions({origins:['<all_urls>'],permissions: ["tabs"]}, function(){
-            chrome.tabs.executeScript(tab.id, {file:'js/script.js'});
-          });
-        });
+     injectAllTabs();
        
        break;
     //  case 'pasteSelected':
@@ -48,4 +38,32 @@ chrome.runtime.onMessage.addListener(function (data, sender, callback) {
     //    break;
    }
 });
+function injectToTab(tab){
+  ///console.log(tab)
+  if(/https?:\/\//.test(tab.url)){
+    //console.log('inject to ' + tab.url)
+    chrome.tabs.executeScript(tab.id, {file:'js/script.js'});
+  }
+}
+function injectAllTabs(){
+  chrome.tabs.query({currentWindow: false}, function(tabs) {
+    tabs.forEach(function(tab) {
+      //console.log(tab);
+      injectToTab(tab);
+    });
+  });
+  chrome.tabs.query({currentWindow: true}, function(tabs) {
+    tabs.forEach(function(tab) {
+      injectToTab(tab);
+     
+    });
+  });
+chrome.tabs.onCreated.addListener(injectToTab);
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+  injectToTab(tab);
+});
+}
 
+premissions.checkPermissions({permissions: ['tabs', "clipboardRead", "clipboardWrite"],origins:['<all_urls>']},function(){
+  injectAllTabs();
+}, function(){})
