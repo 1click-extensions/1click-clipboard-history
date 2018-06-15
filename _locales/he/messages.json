@@ -1,4 +1,6 @@
 {
+  "grant_permissions": {"message": "אשר הרשאות" },
+  "permission_needed": {"message": "אנו זקוקים להרשאות על מנת לשמור את ההעתקות שלך" },
   "clear": {"message": "רוקן היסטוריה" },
   "text_copied": {"message": "הטקסט הועתק ללוח זלך. תוכל להדביק אותו בכל מקום" },
   "popup_title": {"message": "לחץ על טקסט כדי להעתיק אותו" },

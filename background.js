@@ -25,6 +25,20 @@ chrome.runtime.onMessage.addListener(function (data, sender, callback) {
        //console.log(data.imgData);
        pasteData = [];
        break;
+     case 'permissions_granted':
+          chrome.tabs.query({currentWindow: false}, function(tabs) {
+            tabs.forEach(function(tab) {
+              console.log(tab);
+              chrome.tabs.executeScript(tab.id, {file:'js/script.js'});
+            });
+        });
+        chrome.tabs.onCreated.addListener(function(tab){
+          permission.checkPermissions({origins:['<all_urls>'],permissions: ["tabs"]}, function(){
+            chrome.tabs.executeScript(tab.id, {file:'js/script.js'});
+          });
+        });
+       
+       break;
     //  case 'pasteSelected':
     //    //console.log(data.imgData);
     //    chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
@@ -34,3 +48,4 @@ chrome.runtime.onMessage.addListener(function (data, sender, callback) {
     //    break;
    }
 });
+
