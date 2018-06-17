@@ -3,9 +3,9 @@ if('undefined' == typeof copyListened){
   document.addEventListener('copy', function(e) {
     var copyed = document.getSelection().toString();
           chrome.runtime.sendMessage({
-          data: 'copyDataAdded',
-          str: copyed,
-        });
+            data: 'copyDataAdded',
+            str: copyed,
+          });
 });
 copyListened = true;
 }
